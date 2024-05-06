@@ -39,6 +39,8 @@ urlpatterns = [
     
     path('actualizarPelicula/', views.actualizarPelicula, name = "actualizarPelicula"),
     
+    path('eliminarPelicula/<int:id>/', views.eliminarPelicula, name = "eliminarPelicula"),
+    
 
      
 ]

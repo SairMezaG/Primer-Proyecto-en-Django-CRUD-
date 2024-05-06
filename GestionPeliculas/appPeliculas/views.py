@@ -90,7 +90,7 @@ def listarPeliculas(request):
     return render(request, 'listarPeliculas.html', retorno)
 
 
-#Desde aquí empezó por si debo regresar
+
 def consultarPeliculaPorId(request, id):
     pelicula = Pelicula.objects.get(pk = id)
     generos = Genero.objects.all()
@@ -119,6 +119,8 @@ def actualizarPelicula(request):
         peliculaActualizar.genero = genero
         foto = request.FILES.get("foto")
         
+        
+        
         #Si han enviado foto, se actualiza el campo
         if foto:
             #Primero eliminamos la foto existente
@@ -141,9 +143,25 @@ def actualizarPelicula(request):
     return redirect("/listarPeliculas")   #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
     
         
-        
-    
+#Desde aquí empezó por si debo regresar
 
+
+def eliminarPelicula(request, id):
+    try:
+        # Buscamos la pelicula por su ID
+        peliculaEliminar = Pelicula.objects.get(pk=id)
+        # Eliminamos la Pelicula
+        peliculaEliminar.delete()
+        
+        mensaje = "Pelicula ELIMINADA correctamente"
+        
+    except Exception as error:  
+        mensaje = str(error)
+        
+    retorno = {"mensaje": mensaje}
+    
+    return redirect("listarPeliculas/")  # Redirigimos a la página de listar películas
+ 
 
 
 

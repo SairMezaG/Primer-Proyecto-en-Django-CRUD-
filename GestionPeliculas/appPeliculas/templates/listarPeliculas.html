@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-   
+    
+    {% load static %}
+    <script src="{% static '../static/js/app.js' %}"></script>
     <title>Lista de Peliculas</title>
 </head>
 <body>
@@ -84,8 +86,10 @@
                       <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="/consultarPelicula/{{p.id}}">EDITAR</a>
                       <br>
                       <br>
-                      <a class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="" onclick="eliminarPelicula('{{p.id}}')">ELIMINAR</a>
-                        
+                     <a class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="" onclick="eliminarPelicula('{{p.id}}')">ELIMINAR</a>
+                     
+
+
                     </td>
                 </tr>
             {% endfor %}
