@@ -106,7 +106,7 @@ def actualizarPelicula(request):
     try:
         idPelicula = request.POST["idPelicula"]
         #Obtener la pelicula a partir de si ID
-        peliculaActualizar = Pelicula.objects.get(pk=idPelicula)
+        peliculaActualizar = Pelicula.objects.get(id=idPelicula)
         #Actualizar los campos
         peliculaActualizar.codigo = request.POST["txtCodigo"]
         peliculaActualizar.titulo = request.POST["txtTitulo"]
@@ -115,7 +115,7 @@ def actualizarPelicula(request):
         peliculaActualizar.resumen = request.POST["txtResumen"]
         idGenero = int(request.POST["idGenero"])
         #Obtner el objeto Genero a partir de su ID
-        genero = Genero.objects.get(pk=idGenero)
+        genero = Genero.objects.get(id=idGenero)
         peliculaActualizar.genero = genero
         foto = request.FILES.get("foto")
         
@@ -140,16 +140,16 @@ def actualizarPelicula(request):
     
     """ return JsonResponse(retorno)  """
     
-    return redirect("/listarPeliculas")   #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
+    return redirect("/listarPeliculas")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
     
         
-#Desde aquí empezó por si debo regresar
+
 
 
 def eliminarPelicula(request, id):
     try:
         # Buscamos la pelicula por su ID
-        peliculaEliminar = Pelicula.objects.get(pk=id)
+        peliculaEliminar = Pelicula.objects.get(id=id)
         # Eliminamos la Pelicula
         peliculaEliminar.delete()
         
@@ -160,7 +160,8 @@ def eliminarPelicula(request, id):
         
     retorno = {"mensaje": mensaje}
     
-    return redirect("listarPeliculas/")  # Redirigimos a la página de listar películas
+    return redirect("/listarPeliculas/")
+ 
  
 
 

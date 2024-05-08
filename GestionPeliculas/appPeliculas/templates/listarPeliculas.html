@@ -6,9 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-gmpADSO/2A+L4lDOVRjgn+C/Gskx1c6zTpU5U0Ik8z9iDR+Gvp1wTkbBjsH50SwX" crossorigin="anonymous">
+
+
+    <!-- Esto es para el mensaje modal de la funcion eliminar -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% load static %}
     <script src="{% static '../static/js/app.js' %}"></script>
+
+
     <title>Lista de Peliculas</title>
 </head>
 <body>
@@ -19,7 +26,7 @@
     <label class="block ml-[35%] text-xl text-gray-700 text-sm font-bold mb-2" for="txtGenero">
         PELICULAS DISPONIBLES
     </label>
-    
+    {{mensaje}}
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-center  text-gray-700 uppercase dark:text-gray-400">
             <tr class="text-lg border border-black">
@@ -86,7 +93,7 @@
                       <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="/consultarPelicula/{{p.id}}">EDITAR</a>
                       <br>
                       <br>
-                     <a class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="" onclick="eliminarPelicula('{{p.id}}')">ELIMINAR</a>
+                     <button class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onclick="eliminarPelicula('{{p.id}}')"><i>ELIMINAR</i></button>
                      
 
 
