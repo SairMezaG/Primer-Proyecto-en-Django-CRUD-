@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 import os
 from django.conf import settings
+from django.urls import reverse
 
 
 
@@ -32,6 +33,66 @@ def agregarGenero(request):
     return render(request, 'agregarGenero.html', {'mensaje': mensaje})
 
 
+def listarGeneros(request):
+    generos = Genero.objects.all()
+    retorno = {"generos": generos}
+    return render(request, 'listarGeneros.html', retorno)
+
+
+def consultarGeneroPorId(request, id):
+    generos = Genero.objects.get(id = id)
+    generos = Genero.objects.all()
+    #Retornamos lo generos porque se necesitan en la interfaz
+    retorno = {"generos": generos}
+    return render (request, "actualizarGenero.html", retorno)
+
+
+
+def actualizarGenero(request):
+    mensaje = ""  # Inicializamos la variable mensaje
+    try:
+        idGenero = request.POST["idGenero"]
+        #Obtener la pelicula a partir de si ID
+        generoActualizar = Pelicula.objects.get(id=idGenero)
+        #Actualizar los campos
+        generoActualizar.nombre = request.POST["txtNombre"]
+        
+        #Actualizar la pelicula en la base de datos
+        generoActualizar.save()
+        mensaje = "Pelicula Actualizada"
+    except Exception as error:
+        mensaje = str(error)
+        
+    retorno = {"mensaje": mensaje}
+    
+    
+    """ return JsonResponse(retorno)  """
+    
+    return redirect("/listarGenero")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
+    
+
+
+def eliminarGenero(request, id):
+    try:
+        # Buscamos el genero por su ID
+        generoEliminar = Genero.objects.get(id=id)
+        # Eliminamos el genero
+        generoEliminar.delete()
+        
+        mensaje = "Genero ELIMINADo correctamente"
+        
+    except Exception as error:  
+        mensaje = str(error)
+        
+    retorno = {"mensaje": mensaje}
+    
+    return redirect("/listarGeneros/")
+ 
+ 
+
+
+
+
 
 
 """ def vistaAgregarPelicula(request):
@@ -56,7 +117,7 @@ def agregarPelicula(request):
             resumen = request.POST['txtResumen']
             foto = request.FILES['foto']  
             idGenero = int(request.POST['idGenero'])  
-            genero = Genero.objects.get(pk=idGenero)
+            genero = Genero.objects.get(id=idGenero)
             
 
 
@@ -92,7 +153,7 @@ def listarPeliculas(request):
 
 
 def consultarPeliculaPorId(request, id):
-    pelicula = Pelicula.objects.get(pk = id)
+    pelicula = Pelicula.objects.get(id = id)
     generos = Genero.objects.all()
     #Retornamos lo generos porque se necesitan en la interfaz
     retorno = {"pelicula": pelicula, "generos": generos}

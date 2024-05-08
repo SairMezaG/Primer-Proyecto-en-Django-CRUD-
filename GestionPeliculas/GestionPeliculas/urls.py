@@ -41,7 +41,11 @@ urlpatterns = [
     
     path('eliminarPelicula/<int:id>/', views.eliminarPelicula, name = "eliminarPelicula"),
     
-
+    path('eliminarGenero/<int:id>/', views.eliminarGenero, name = "eliminarGenero"),
+    
+    path('listarGeneros/', views.listarGeneros, name = "listarGeneros"),
+    
+     path('consultarGenero/<int:id>/', views.consultarGeneroPorId, name = "consultarGeneroPorId"),
      
 ]
 

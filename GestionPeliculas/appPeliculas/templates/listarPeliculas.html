@@ -1,25 +1,7 @@
+{% extends "base.html" %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    
-
-
-    <!-- Esto es para el mensaje modal de la funcion eliminar -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {% load static %}
-    <script src="{% static '../static/js/app.js' %}"></script>
-
-
-    <title>Lista de Peliculas</title>
-</head>
-<body>
-    
+{% block listarPeliculas %}
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-[8%]  ">
    
@@ -108,5 +90,4 @@
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarGenero' %}">Agregar un nuevo Genero</a>
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarPelicula' %}">Agregar una nueva Pelicula</a>
 
-</body>
-</html>
+{% endblock %}

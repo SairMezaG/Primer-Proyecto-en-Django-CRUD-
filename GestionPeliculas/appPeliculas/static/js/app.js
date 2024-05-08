@@ -16,16 +16,32 @@ function eliminarPelicula(id){
 }
 
 
-function editarPelicula(id) {
+
+/* function eliminarGenero(nombre) {
     Swal.fire({
-        title: "¿Está seguro que desea EDITAR esta Película?",
+        title: "¿Está seguro que desea ELIMINAR el género " + nombre + "?",
         showDenyButton: true,
         confirmButtonText: "SI",
         denyButtonText: "NO",
     }).then((result) => {
         if (result.isConfirmed) {
-            // Redirige a la página de edición de la película
-            location.href = "/listarPeliculas/" + id;
+            // Encode the name to ensure it's properly passed in the URL
+            var encodedNombre = encodeURIComponent(nombre);
+            // Send the request to delete the genre
+            location.href = "/eliminarGenero/" + encodedNombre;
+        }
+    });
+}
+ */
+function eliminarGenero(id) {
+    Swal.fire({
+        title: "¿Está seguro que desea ELIMINAR este Género?",
+        showDenyButton: true,
+        confirmButtonText: "SI",
+        denyButtonText: "NO",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "/eliminarGenero/" + id;
         }
     });
 }

@@ -3,10 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- Esto es para el mensaje modal de la funcion eliminar -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% load static %}
+    <script src="{% static '../static/js/app.js' %}"></script>
+
+
+    <title></title>
 </head>
 <body>
+  
+
+    {% block inicioDeSesion %}
+    {% endblock %}
+
+
+    {% block agregarPelicula %}
+    {% endblock %}
+
+
+    {% block listarPeliculas %}
+    {% endblock %}
+
     
+    {% block agregarGenero %}
+    {% endblock %}
+
+    {% block listarGeneros %}
+    {% endblock %}
     
-</body>
+
+    {% block actualizarPelicula %}
+    {% endblock %}
+
+    {% block actualizarGenero %}
+    {% endblock %}
+
+    
+
+
+
+
+
+    
+
+
 </html>

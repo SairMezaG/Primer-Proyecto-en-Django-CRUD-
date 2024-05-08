@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="">
-    <title>Agregar Película</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+
+
+{% block agregarPelicula %}
     <div class="container">
        
         <h1>{{ mensaje }}</h1>
@@ -74,9 +70,11 @@
     <br>
     <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarGenero' %}">Agregar un nuevo Genero</a>
     <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'listarPeliculas' %}">Ir a la lista de Peliculas</a>
-    
-</body>
-</html>
+    <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'listarGeneros' %}">Ir a la lista de Generos</a>
+
+    {% endblock %}
+
+   
  
 
 

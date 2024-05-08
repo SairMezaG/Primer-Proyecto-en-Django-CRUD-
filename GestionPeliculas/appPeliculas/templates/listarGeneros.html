@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block listarGeneros %}
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-[8%]  ">
+   
+    <label class="block ml-[35%] text-xl text-gray-700 text-sm font-bold mb-2" for="txtGenero">
+        Generos Diponibles
+    </label>
+    {{mensaje}}
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-center  text-gray-700 uppercase dark:text-gray-400">
+            <tr class="text-lg border border-black">
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Nombre
+                </th>
+               
+                <th scope="col" class="px-6 py-3 dark:bg-gray-800">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for g in generos%}
+                <tr class="border-b text-center text-base border-gray-200 dark:border-gray-700">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        {{g.nombre }}
+                    </td>
+                    
+
+                    <td>
+                        
+                      <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="/consultarGenero/{{g.id}}">EDITAR</a>
+                      <br>
+                      <br>
+                     <button class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onclick="eliminarGenero('{{g.id}}')"><i>ELIMINAR</i></button>
+                     
+
+
+                    </td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+<br>
+<a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarGenero' %}">Agregar un nuevo Genero</a>
+<a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarPelicula' %}">Agregar una nueva Pelicula</a>
+
+
+{% endblock %}
