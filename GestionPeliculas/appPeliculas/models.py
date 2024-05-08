@@ -20,7 +20,7 @@ class Pelicula(models.Model):
     resumen= models.CharField(max_length=2000)
     foto = models.ImageField(upload_to="fotos/", null=True, blank=True)
     genero= models.ForeignKey(Genero, on_delete=models.PROTECT)  
-
+    
 
 
  # Esta funcion devuelve el un string(titulo) para poder visualizarlo en el admin
