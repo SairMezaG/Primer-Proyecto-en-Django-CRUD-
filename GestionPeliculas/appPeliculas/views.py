@@ -68,7 +68,7 @@ def actualizarGenero(request):
     
     """ return JsonResponse(retorno)  """
     
-    return redirect("/listarGenero")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
+    return redirect("/listarGeneros")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
     
 
 

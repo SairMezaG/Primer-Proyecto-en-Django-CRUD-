@@ -45,7 +45,9 @@ urlpatterns = [
     
     path('listarGeneros/', views.listarGeneros, name = "listarGeneros"),
     
-     path('consultarGenero/<int:id>/', views.consultarGeneroPorId, name = "consultarGeneroPorId"),
+    path('consultarGenero/<int:id>/', views.consultarGeneroPorId, name = "consultarGeneroPorId"),
+    
+     path('actualizarGenero/', views.actualizarGenero, name = "actualizarGenero"),
      
 ]
 
