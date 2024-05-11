@@ -25,12 +25,16 @@ def agregarGenero(request):
     if request.method == 'POST':
         try:
             nombre = request.POST['txtGenero']
-            genero = Genero.objects.create(nombre=nombre)
+            genero = Genero.objects.create(
+                nombre=nombre
+                ),
             mensaje = 'Género agregado correctamente'
         except Exception as e:
             mensaje = "El genero ingresado ya existe en la Base de Datos"
     
-    return render(request, 'agregarGenero.html', {'mensaje': mensaje})
+    return render(request, 'agregarGenero.html', {'mensaje': mensaje}) 
+    
+    
 
 
 def listarGeneros(request):
@@ -40,36 +44,15 @@ def listarGeneros(request):
 
 
 def consultarGeneroPorId(request, id):
-    generos = Genero.objects.get(id = id)
-    generos = Genero.objects.all()
+    genero = Genero.objects.get(id = id)
+    genero = Genero.objects.all()
     #Retornamos lo generos porque se necesitan en la interfaz
-    retorno = {"generos": generos}
+    retorno = {"genero": genero}
     return render (request, "actualizarGenero.html", retorno)
 
 
 
-def actualizarGenero(request):
-    mensaje = ""  # Inicializamos la variable mensaje
-    try:
-        idGenero = request.POST["idGenero"]
-        #Obtener la pelicula a partir de si ID
-        generoActualizar = Pelicula.objects.get(id=idGenero)
-        #Actualizar los campos
-        generoActualizar.nombre = request.POST["txtNombre"]
-        
-        #Actualizar la pelicula en la base de datos
-        generoActualizar.save()
-        mensaje = "Pelicula Actualizada"
-    except Exception as error:
-        mensaje = str(error)
-        
-    retorno = {"mensaje": mensaje}
-    
-    
-    """ return JsonResponse(retorno)  """
-    
-    return redirect("/listarGeneros")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
-    
+
 
 
 def eliminarGenero(request, id):
@@ -90,19 +73,11 @@ def eliminarGenero(request, id):
  
  
 
-
-
-
-
-
 """ def vistaAgregarPelicula(request):
     generos= Genero.objects.all()
     retorno= {"generos": generos}
     return render(request, "agregarPelicula.html", retorno)
  """
-
-
-
 
 
 def agregarPelicula(request):
@@ -207,6 +182,18 @@ def actualizarPelicula(request):
 
 
 
+def consultarPeliculaPorId(request, id):
+    pelicula = Pelicula.objects.get(id = id)
+    generos = Genero.objects.all()
+    #Retornamos lo generos porque se necesitan en la interfaz
+    retorno = {"pelicula": pelicula, "generos": generos}
+    return render (request, "actualizarPelicula.html", retorno)
+
+
+
+
+
+
 def eliminarPelicula(request, id):
     try:
         # Buscamos la pelicula por su ID
@@ -224,11 +211,6 @@ def eliminarPelicula(request, id):
     return redirect("/listarPeliculas/")
  
  
-
-
-
-
-
 
 
 
