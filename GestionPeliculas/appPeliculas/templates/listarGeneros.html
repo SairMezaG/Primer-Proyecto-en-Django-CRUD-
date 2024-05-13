@@ -12,6 +12,9 @@
         <thead class="text-xs text-center  text-gray-700 uppercase dark:text-gray-400">
             <tr class="text-lg border border-black">
                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    #
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
                     Nombre
                 </th>
                
@@ -22,7 +25,9 @@
         </thead>
         <tbody>
             {% for g in generos%}
+                 
                 <tr class="border-b text-center text-base border-gray-200 dark:border-gray-700">
+                    <td>{{forloop.counter}}</td>
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                         {{g.nombre }}
                     </td>
