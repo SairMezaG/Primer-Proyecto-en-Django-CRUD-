@@ -43,11 +43,11 @@ urlpatterns = [
     
     path('agregarGenero/', views.agregarGenero, name = "agregarGenero"),
     
-    path('eliminarGenero/<int:id>/', views.eliminarGenero, name = "eliminarGenero"),
+    path('eliminarGenero/<str:objectId>/', views.eliminarGenero, name="eliminarGenero"),
     
     path('listarGeneros/', views.listarGeneros, name = "listarGeneros"),
     
-    path('consultarGenero/<int:id>/', views.consultarGeneroPorId, name = "consultarGeneroPorId"),
+    
     
     
      

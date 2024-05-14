@@ -2,13 +2,14 @@
 
 
 {% block listarGeneros %}
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-[8%]  ">
    
     <label class="block ml-[35%] text-xl text-gray-700 text-sm font-bold mb-2" for="txtGenero">
         Generos Diponibles
     </label>
     {{mensaje}}
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="tablaGeneros">
         <thead class="text-xs text-center  text-gray-700 uppercase dark:text-gray-400">
             <tr class="text-lg border border-black">
                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
@@ -32,26 +33,21 @@
                         {{g.nombre }}
                     </td>
                     
-
                     <td>
-                        
-                      <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="/agregarGenero/">AGREGAR GENERO</a>
-                      <br>
-                      <br>
-                     <button class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onclick="eliminarGenero('{{g.id}}')"><i>ELIMINAR</i></button>
-                     
-
-
+                     <button class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onclick="eliminarGenero('{{g.id}}')">ELIMINAR</button>
                     </td>
                 </tr>
             {% endfor %}
+
+            
             
         </tbody>
     </table>
 </div>
 <br>
+<div class="enlaces">
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarGenero' %}">Agregar un nuevo Genero</a>
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarPelicula' %}">Agregar una nueva Pelicula</a>
-
-
+<a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "  href="{% url 'listarPeliculas' %}">Ir a la lista de Peliculas</a>
+</div>
 {% endblock %}

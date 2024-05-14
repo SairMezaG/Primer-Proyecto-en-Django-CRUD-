@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from django.db import Error
+
 from appPeliculas.models import Genero, Pelicula
-from django.http import HttpResponse, JsonResponse
+
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-import os
+
 from django.conf import settings
-from django.urls import reverse
+
+import os
+
+
 
 
 
@@ -13,8 +16,8 @@ from django.urls import reverse
 
 
 """ def vistaAgregarGenero(request):
-     return render(request, "agregarGenero.html")
- """
+     return render(request, "agregarGenero.html") """
+
 
 def inicio(request):
     return render(request, "inicioDeSesion.html")
@@ -43,22 +46,22 @@ def listarGeneros(request):
     return render(request, 'listarGeneros.html', retorno)
 
 
-def consultarGeneroPorId(request, id):
+""" def consultarGeneroPorId(request, id):
     genero = Genero.objects.get(id = id)
     genero = Genero.objects.all()
     #Retornamos lo generos porque se necesitan en la interfaz
     retorno = {"genero": genero}
-    return render (request, "actualizarGenero.html", retorno)
+    return render (request, "actualizarGenero.html", retorno) """
 
 
 
 
 
 
-def eliminarGenero(request, id):
+def eliminarGenero(request, objectId):
     try:
         # Buscamos el genero por su ID
-        generoEliminar = Genero.objects.get(id=id)
+        generoEliminar = Genero.objects.get(id=objectId)
         # Eliminamos el genero
         generoEliminar.delete()
         
@@ -179,20 +182,6 @@ def actualizarPelicula(request):
     return redirect("/listarPeliculas")    #Para que cuando se de click en "Actualizar, me lleve a la lista actualizada"
     
         
-
-
-
-def consultarPeliculaPorId(request, id):
-    pelicula = Pelicula.objects.get(id = id)
-    generos = Genero.objects.all()
-    #Retornamos lo generos porque se necesitan en la interfaz
-    retorno = {"pelicula": pelicula, "generos": generos}
-    return render (request, "actualizarPelicula.html", retorno)
-
-
-
-
-
 
 def eliminarPelicula(request, id):
     try:

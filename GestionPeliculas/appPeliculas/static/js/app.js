@@ -31,9 +31,9 @@ function eliminarPelicula(id){
             location.href = "/eliminarGenero/" + encodedNombre;
         }
     });
-}
- */
-function eliminarGenero(id) {
+} */
+
+/* function eliminarGenero(id) {
     Swal.fire({
         title: "¿Está seguro que desea ELIMINAR este Género?",
         showDenyButton: true,
@@ -42,6 +42,20 @@ function eliminarGenero(id) {
     }).then((result) => {
         if (result.isConfirmed) {
             location.href = "/eliminarGenero/" + id;
+        }
+    });
+} */
+
+
+function eliminarGenero(objectId) {
+    Swal.fire({
+        title: "¿Está seguro que desea ELIMINAR este Género?",
+        showDenyButton: true,
+        confirmButtonText: "SI",
+        denyButtonText: "NO",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "/eliminarGenero/" + objectId;
         }
     });
 }
