@@ -9,7 +9,7 @@ class Genero(models.Model):
 
 
  # Esta funcion devuelve el un string(nombre) para poder visualizarlo en el admin
-def __str__(self):
+def __str__(self) -> str:
         return self.nombre    
 
 
