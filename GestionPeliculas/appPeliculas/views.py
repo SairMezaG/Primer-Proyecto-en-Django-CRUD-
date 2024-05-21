@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from django.conf import settings
 
+from django.contrib import messages
+
 import os
 
 
@@ -46,15 +48,23 @@ def listarGeneros(request):
     return render(request, 'listarGeneros.html', retorno)
 
 
-""" def consultarGeneroPorId(request, id):
-    genero = Genero.objects.get(id = id)
-    genero = Genero.objects.all()
-    #Retornamos lo generos porque se necesitan en la interfaz
+""" def edicionGenero(request, nombre):
+    genero = Genero.objects.get(nombre = nombre)
+    
     retorno = {"genero": genero}
-    return render (request, "actualizarGenero.html", retorno) """
+    return render (request, "edicionGenero.html", retorno) 
 
 
-
+def editarGenero(request):
+    nombre = request.POST["txtGenero"]
+    
+    genero = Genero.objects.get(nombre = nombre)
+    genero.nombre = nombre
+    genero.save()
+    return render(request, "listarGeneros.html")
+    
+    
+ """
 
 
 
@@ -65,14 +75,15 @@ def eliminarGenero(request, objectId):
         # Eliminamos el genero
         generoEliminar.delete()
         
-        mensaje = "Genero ELIMINADo correctamente"
+        mensaje = "Genero ELIMINADO Satisfactoriamente"
         
     except Exception as error:  
         mensaje = str(error)
         
     retorno = {"mensaje": mensaje}
     
-    return redirect("/listarGeneros/")
+    return redirect("/listarGeneros/") 
+    
  
  
 

@@ -6,9 +6,9 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-[8%]  ">
    
     <label class="block ml-[35%] text-xl text-gray-700 text-sm font-bold mb-2" for="txtGenero">
-        Generos Diponibles
+       GENEROS DISPONIBLES
     </label>
-    {{mensaje}}
+   
     <table class="tablaGeneros">
         <thead class="text-xs text-center  text-gray-700 uppercase dark:text-gray-400">
             <tr class="text-lg border border-black">
@@ -34,20 +34,21 @@
                     </td>
                     
                     <td>
+ 
                      <button class="bg-red-500 mx-auto  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onclick="eliminarGenero('{{g.id}}')">ELIMINAR</button>
                     </td>
                 </tr>
-            {% endfor %}
-
-            
-            
+            {% endfor %}  
         </tbody>
     </table>
 </div>
+{{mensaje}}
 <br>
 <div class="enlaces">
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarGenero' %}">Agregar un nuevo Genero</a>
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " href="{% url 'agregarPelicula' %}">Agregar una nueva Pelicula</a>
 <a class="bg-green-500 mx-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "  href="{% url 'listarPeliculas' %}">Ir a la lista de Peliculas</a>
 </div>
+
+
 {% endblock %}
